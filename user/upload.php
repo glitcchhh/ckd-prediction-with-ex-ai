@@ -96,9 +96,13 @@ $lime_html_file = "C:\\xampp\\htdocs\\kidney_disease\\LIME\\lime_explanation.htm
                         }
                         fclose($file);
 
+                        sleep(3);
+
                         // Run LIME Model
-                        $command = "python \"$lime_script\"";
-                        shell_exec($command . " 2>&1");
+                        $command = "C:\\xampp\\php\\php.exe \"$lime_script\" 2>&1"; 
+                        $output = shell_exec($command);
+                        echo "<pre>$output</pre>"; // Display error messages
+
 
                         // Fetch Prediction Result
                         $prediction_result = "";
