@@ -36,7 +36,7 @@ include("nav.php");
 					<div class="card">
 						<div class="card-body text-center">
 							<img src="338864.png" style="width: 100px; height: 100px;" class="mb-3">
-							<h3>Upload File</h3>
+							<h3>Upload Data for Prediction</h3>
 						</div>
 					</div>
 				</a>
@@ -47,7 +47,7 @@ include("nav.php");
 					<div class="card">
 						<div class="card-body text-center">
 							<img src="edit.jpg" style="width: 100px; height: 100px;" class="mb-3">
-							<h3>Upload image</h3>
+							<h3>Upload CT Scan for prediction</h3>
 						</div>
 					</div>
 				</a>

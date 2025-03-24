@@ -101,7 +101,7 @@ $lime_html_file = "C:\\xampp\\htdocs\\kidney_disease\\LIME\\lime_explanation.htm
                         // Run LIME Model
                         $command = "C:\Users\diyaa\AppData\Local\Programs\Python\Python312\python.exe \"$lime_script\" 2>&1"; 
                         $output = shell_exec($command);
-                        echo "<pre>$output</pre>"; // Display error messages
+                        //echo "<pre>$output</pre>"; // Display error messages
 
 
                         // Fetch Prediction Result

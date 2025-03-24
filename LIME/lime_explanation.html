@@ -37089,25 +37089,25 @@
 /***/ })
 /******/ ]);
 //# sourceMappingURL=bundle.js.map </script></head><body>
-        <div class="lime top_div" id="top_div017POP2QNB19JU5"></div>
+        <div class="lime top_div" id="top_divBYC7J149DBZQGAV"></div>
         
         <script>
-        var top_div = d3.select('#top_div017POP2QNB19JU5').classed('lime top_div', true);
+        var top_div = d3.select('#top_divBYC7J149DBZQGAV').classed('lime top_div', true);
         
             var pp_div = top_div.append('div')
                                 .classed('lime predict_proba', true);
             var pp_svg = pp_div.append('svg').style('width', '100%');
-            var pp = new lime.PredictProba(pp_svg, ["0", "1"], [0.09200164356787491, 0.9079983564321252]);
+            var pp = new lime.PredictProba(pp_svg, ["0", "1"], [0.05293193747580823, 0.9470680625241918]);
             
         
         var exp_div;
             var exp = new lime.Explanation(["0", "1"]);
         
                 exp_div = top_div.append('div').classed('lime explanation', true);
-                exp.show([["1.01 < specific_gravity <= 1.02", -0.09003699906732511], ["packed_cell_volume <= 31.00", 0.06249365103807951], ["0.00 < albumin <= 2.00", 0.06223047038069287], ["9.78 < haemoglobin <= 12.65", 0.060935977355127006], ["0.00 < diabetes_mellitus <= 1.00", 0.059286597421621685], ["0.00 < hypertension <= 1.00", 0.04765528498920015], ["1.00 < serum_creatinine <= 1.40", -0.04574027360571259], ["26.00 < blood_urea <= 39.00", -0.020291479209366192], ["peda_edema <= 0.00", -0.012870005016043911], ["4.80 < red_blood_cell_count <= 5.43", -0.009853175492561338]], 1, exp_div);
+                exp.show([["0.00 < diabetes_mellitus <= 1.00", 0.06769686304314226], ["0.00 < hypertension <= 1.00", 0.0642559416370704], ["0.97 < serum_creatinine <= 1.20", -0.06346531033294427], ["9.88 < haemoglobin <= 12.65", 0.05429305552908322], ["0.00 < albumin <= 2.00", 0.044094945964133006], ["peda_edema <= 0.00", -0.02981036594477532], ["40.00 < packed_cell_volume <= 44.25", -0.025759421983868738], ["sodium <= 135.00", 0.01666834810530434], ["appetite > 0.00", 0.013726605113326795], ["sugar <= 0.00", -0.009617068474235697]], 1, exp_div);
                 
         var raw_div = top_div.append('div');
-            exp.show_raw_tabular([["specific_gravity", "1.02", -0.09003699906732511], ["packed_cell_volume", "31.00", 0.06249365103807951], ["albumin", "1.00", 0.06223047038069287], ["haemoglobin", "11.20", 0.060935977355127006], ["diabetes_mellitus", "1.00", 0.059286597421621685], ["hypertension", "1.00", 0.04765528498920015], ["serum_creatinine", "1.20", -0.04574027360571259], ["blood_urea", "36.00", -0.020291479209366192], ["peda_edema", "0.00", -0.012870005016043911], ["red_blood_cell_count", "5.20", -0.009853175492561338]], 1, raw_div);
+            exp.show_raw_tabular([["diabetes_mellitus", "1.00", 0.06769686304314226], ["hypertension", "1.00", 0.0642559416370704], ["serum_creatinine", "1.20", -0.06346531033294427], ["haemoglobin", "11.20", 0.05429305552908322], ["albumin", "1.00", 0.044094945964133006], ["peda_edema", "0.00", -0.02981036594477532], ["packed_cell_volume", "44.00", -0.025759421983868738], ["sodium", "111.00", 0.01666834810530434], ["appetite", "1.00", 0.013726605113326795], ["sugar", "0.00", -0.009617068474235697]], 1, raw_div);
         
         </script>
         </body></html>

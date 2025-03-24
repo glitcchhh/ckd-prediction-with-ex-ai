@@ -111,7 +111,7 @@ include("nav.php");
                                             <h3 class='text-primary'>" . htmlspecialchars($prediction) . "</h3>
                                             <hr>
                                             <p class='text-muted'>
-                                                The predicted class indicates the likelihood of kidney disease. If the result is not 'Predicted class: 0', consult a doctor for further evaluation.
+                                                If the result is not 'Predicted class: 1', consult a doctor for further evaluation.
                                             </p>
                                             <a href='viewhospital.php' class='btn btn-danger'>
                                                 <i class='la la-stethoscope'></i> Consult Doctor
