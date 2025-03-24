@@ -119,7 +119,7 @@ $lime_html_file = "C:\\xampp\\htdocs\\kidney_disease\\LIME\\lime_explanation.htm
                         echo "</pre></center><br><br><br></div>";
 
                         // Display LIME Explanation HTML
-                        /*if (file_exists($lime_html_file)) {
+                        if (file_exists($lime_html_file)) {
                             $lime_html_content = file_get_contents($lime_html_file);
                             echo "<div class='col-lg-9 col-md-12 well' style='background-color:#f0f0f0'>
                                     <center><h1>LIME Explanation</h1><hr>
@@ -130,7 +130,7 @@ $lime_html_file = "C:\\xampp\\htdocs\\kidney_disease\\LIME\\lime_explanation.htm
                                     <center><h1>LIME Explanation</h1><hr>
                                     <p>LIME explanation not available.</p>
                                     </center><br><br><br></div>";
-                        }*/
+                        }
                     }
                     ?>
                 </div>

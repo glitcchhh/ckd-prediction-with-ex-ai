@@ -2,17 +2,17 @@
 Explanation for the test instance at index 0 (CKD=1, Not CKD=0):
 Predicted Class: CKD (1)
 
-+--------------------+----------------+--------+
-|      Feature       | Instance Value | Weight |
-+--------------------+----------------+--------+
-|  specific_gravity  |      1.02      | -0.089 |
-|  serum_creatinine  |      1.2       | -0.062 |
-|    hypertension    |      1.0       | 0.061  |
-| diabetes_mellitus  |      1.0       | 0.057  |
-| packed_cell_volume |     200.0      | -0.055 |
-|    haemoglobin     |      11.2      | 0.049  |
-|      albumin       |      2.0       | 0.040  |
-|      appetite      |      1.0       | 0.019  |
-|   blood_pressure   |      90.0      | 0.018  |
-|      pus_cell      |      0.0       | 0.015  |
-+--------------------+----------------+--------+
++----------------------+----------------+--------+
+|       Feature        | Instance Value | Weight |
++----------------------+----------------+--------+
+|   specific_gravity   |      1.02      | -0.090 |
+|  packed_cell_volume  |      31.0      | 0.062  |
+|       albumin        |      1.0       | 0.062  |
+|     haemoglobin      |      11.2      | 0.061  |
+|  diabetes_mellitus   |      1.0       | 0.059  |
+|     hypertension     |      1.0       | 0.048  |
+|   serum_creatinine   |      1.2       | -0.046 |
+|      blood_urea      |      36.0      | -0.020 |
+|      peda_edema      |      0.0       | -0.013 |
+| red_blood_cell_count |      5.2       | -0.010 |
++----------------------+----------------+--------+
