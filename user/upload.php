@@ -5,8 +5,16 @@ include("nav.php");
 $csv_file = "C:\\xampp\\htdocs\\kidney_disease\\LIME\\kidney_disease.csv";
 $lime_script = "C:\\xampp\\htdocs\\kidney_disease\\LIME\\run_lime.py";
 $prediction_file = "C:\\xampp\\htdocs\\kidney_disease\\LIME\\prediction_result.txt";
-$lime_html_file = "C:\\xampp\\htdocs\\kidney_disease\\LIME\\lime_explanation.html"; // Path to the LIME HTML file
+$lime_html_file = "C:\\xampp\\htdocs\\kidney_disease\\LIME\\lime_explanation.html";
 
+$fields = [
+    "age", "bp", "sg", "al", "su", "rbc", "pc", "pcc", "ba",
+    "bgr", "bu", "sc", "sod", "pot", "hemo", "pcv", "wc", "rc",
+    "htn", "dm", "cad", "appet", "pe", "ane"
+];
+
+// Default empty form data
+$form_data = array_combine($fields, array_fill(0, count($fields), ''));
 ?>
 
 <div class="app-content content">
@@ -20,6 +28,50 @@ $lime_html_file = "C:\\xampp\\htdocs\\kidney_disease\\LIME\\lime_explanation.htm
         <div class="content-body">
             <div class="row">
                 <div class="col-12">
+                    <!-- CSV Upload Form -->
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <h4 class="card-title">Upload CSV File</h4>
+                        </div>
+                        <div class="card-content">
+                            <form method="POST" enctype="multipart/form-data">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <input type="file" name="csvfile" accept=".csv" class="form-control" required>
+                                    </div>
+                                    <button type="submit" name="upload" class="btn btn-primary">Upload and Auto-Fill</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <?php
+                    // Handle CSV Upload
+                    if (isset($_POST['upload']) && isset($_FILES['csvfile'])) {
+                        $file = $_FILES['csvfile']['tmp_name'];
+                        
+                        if (($handle = fopen($file, "r")) !== FALSE) {
+                            // Read headers
+                            $headers = fgetcsv($handle);
+                            
+                            // Read first data row
+                            $first_row = fgetcsv($handle);
+                            
+                            if ($first_row) {
+                                // Map CSV columns to form fields
+                                foreach ($fields as $index => $field) {
+                                    $col_index = array_search($field, $headers);
+                                    if ($col_index !== false) {
+                                        $form_data[$field] = $first_row[$col_index];
+                                    }
+                                }
+                            }
+                            fclose($handle);
+                        }
+                    }
+                    ?>
+
+                    <!-- Patient Details Form -->
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Enter Patient Details</h4>
@@ -29,16 +81,11 @@ $lime_html_file = "C:\\xampp\\htdocs\\kidney_disease\\LIME\\lime_explanation.htm
                                 <div class="card-body">
                                     <div class="row">
                                         <?php
-                                        $fields = [
-                                            "age", "bp", "sg", "al", "su", "rbc", "pc", "pcc", "ba",
-                                            "bgr", "bu", "sc", "sod", "pot", "hemo", "pcv", "wc", "rc",
-                                            "htn", "dm", "cad", "appet", "pe", "ane"
-                                        ];
-
                                         foreach ($fields as $field) {
                                             echo '<div class="col-sm-6 mb-3">
                                                     <label>' . ucfirst(str_replace("_", " ", $field)) . '</label>
-                                                    <input type="text" class="form-control" name="' . $field . '" required>
+                                                    <input type="text" class="form-control" name="' . $field . '" 
+                                                           value="' . htmlspecialchars($form_data[$field]) . '" required>
                                                   </div>';
                                         }
                                         ?>
@@ -50,13 +97,14 @@ $lime_html_file = "C:\\xampp\\htdocs\\kidney_disease\\LIME\\lime_explanation.htm
                     </div>
 
                     <?php
+                    // Prediction Logic (mostly unchanged from previous script)
                     if (isset($_POST['predict'])) {
                         $input_data = [];
                         foreach ($fields as $field) {
                             $input_data[$field] = $_POST[$field];
                         }
 
-                        $target_row_id = 134; // 🔹 Set ID to 99
+                        $target_row_id = 134;
                         $csv_data = [];
                         $headers = [];
 
@@ -87,7 +135,7 @@ $lime_html_file = "C:\\xampp\\htdocs\\kidney_disease\\LIME\\lime_explanation.htm
                                 $new_row[$header_index] = $input_data[$field];
                             }
                         }
-                        $csv_data[$target_row_id - 2] = $new_row; // 🔹 Insert at index 98 (zero-based)
+                        $csv_data[$target_row_id - 2] = $new_row;
 
                         $file = fopen($csv_file, "w");
                         fputcsv($file, $headers);
@@ -101,8 +149,6 @@ $lime_html_file = "C:\\xampp\\htdocs\\kidney_disease\\LIME\\lime_explanation.htm
                         // Run LIME Model
                         $command = "C:\Users\diyaa\AppData\Local\Programs\Python\Python312\python.exe \"$lime_script\" 2>&1"; 
                         $output = shell_exec($command);
-                        //echo "<pre>$output</pre>"; // Display error messages
-
 
                         // Fetch Prediction Result
                         $prediction_result = "";
