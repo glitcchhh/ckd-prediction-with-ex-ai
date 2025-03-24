@@ -1,0 +1,6 @@
+Starting batch file execution 
+Changed directory 
+C:\Users\diyaa\AppData\Local\Programs\Python\Python312\python.exe
+C:\xampp\htdocs\kidney_disease\LIME
+C:\Users\diyaa\AppData\Local\Programs\Python\Python312\python.exe: can't open file 'C:\\xampp\\htdocs\\kidney_disease\\LIME\\direct_prediction.py': [Errno 2] No such file or directory
+Batch file execution completed 
